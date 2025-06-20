@@ -8,6 +8,7 @@
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
   NPM_FLAGS = "--production=false"
+  NODE_VERSION = "18.19.0"
 
 # Configuración para las API routes de Next.js
 [[redirects]]
@@ -73,8 +74,4 @@
   pretty_urls = true
 
 [build.processing.images]
-  compress = true
-
-# Configuración de Forms (si usas formularios)
-[build.environment]
-  NODE_VERSION = "18.19.0" 
+  compress = true 
