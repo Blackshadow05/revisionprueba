@@ -1,127 +1,150 @@
-# 🚀 Guía de Despliegue en Netlify con ImageKit.io
+# 🚀 Guía de Deployment en Netlify
 
-## 📋 Checklist Pre-Despliegue
+## Configuración Paso a Paso
 
-### 1. **Verificar Configuración Local**
-```bash
-npm run verify-imagekit
-```
+### 1. Preparación del Repositorio
+✅ **Completado**: Tu proyecto ya está configurado y sincronizado con:
+- **Repositorio**: https://github.com/Blackshadow05/revisionprueba
+- **Configuración**: `netlify.toml` optimizado
+- **Build**: Scripts de Next.js configurados
 
-### 2. **Variables de Entorno Requeridas**
+### 2. Crear Nuevo Site en Netlify
 
-Ve a tu panel de Netlify → **Site settings** → **Environment variables** y agrega:
+#### A) Acceso
+1. Ve a [Netlify Dashboard](https://app.netlify.com/)
+2. Click **"Add new site"** → **"Import an existing project"**
 
-| Variable | Descripción | Ejemplo |
-|----------|-------------|---------|
-| `NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY` | Clave pública de ImageKit | `public_abc123...` |
-| `IMAGEKIT_PRIVATE_KEY` | Clave privada de ImageKit | `private_xyz789...` |
-| `NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT` | URL endpoint de ImageKit | `https://ik.imagekit.io/tu_id` |
+#### B) Conectar GitHub
+1. Selecciona **"Deploy with GitHub"**
+2. Busca: `Blackshadow05/revisionprueba`
+3. Click **"Deploy site"**
 
-> ⚠️ **Importante**: Las variables que empiezan con `NEXT_PUBLIC_` son accesibles desde el cliente. La `IMAGEKIT_PRIVATE_KEY` solo se usa en el servidor.
-
-### 3. **Configuración de Build**
-
-El archivo `netlify.toml` ya está configurado con:
-- ✅ Plugin de Next.js para Netlify
-- ✅ Configuración de API routes
-- ✅ Headers de optimización
-- ✅ Configuración del Service Worker
-
-### 4. **Proceso de Despliegue**
-
-#### Opción A: Despliegue Automático (Recomendado)
-1. Conecta tu repositorio de GitHub a Netlify
-2. Netlify detectará automáticamente que es un proyecto Next.js
-3. Configurará el build command: `npm run build`
-4. Publish directory: `.next`
-
-#### Opción B: Despliegue Manual
-```bash
-# 1. Construir la aplicación
-npm run build
-
-# 2. Subir la carpeta .next a Netlify
-# (Usar la interfaz web de Netlify para drag & drop)
-```
-
-## 🔧 Configuración Específica de Netlify
-
-### Build Settings
-```
+#### C) Build Settings (Auto-detectados)
+```yaml
+Base directory: (vacío)
 Build command: npm run build
 Publish directory: .next
-Node version: 18.x
+Node version: 18.19.0
 ```
 
-### Environment Variables
+### 3. Variables de Entorno Obligatorias
+
+Ve a **Site settings** → **Environment variables** y agrega:
+
+#### Supabase (Obligatorias)
 ```env
-NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY=tu_public_key
-IMAGEKIT_PRIVATE_KEY=tu_private_key
-NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT=https://ik.imagekit.io/tu_id
-
-# Variables existentes de Supabase
-NEXT_PUBLIC_SUPABASE_URL=tu_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_supabase_key
-
-# Otras variables si las tienes
-GOOGLE_SHEETS_CLIENT_EMAIL=tu_email
-GOOGLE_SHEETS_PRIVATE_KEY=tu_private_key
+NEXT_PUBLIC_SUPABASE_URL=https://tu-proyecto.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1...
 ```
 
-## 🧪 Testing Post-Despliegue
-
-### 1. **Verificar Funcionalidad Básica**
-- [ ] La aplicación carga correctamente
-- [ ] Las imágenes existentes de Cloudinary se muestran
-- [ ] El formulario de login funciona
-
-### 2. **Verificar Subida de Imágenes**
-- [ ] Crear nueva revisión → subir evidencias
-- [ ] Agregar nota con imagen desde página de detalles
-- [ ] Verificar que las imágenes aparecen en ImageKit.io
-
-### 3. **Verificar Organización de Carpetas**
-En tu panel de ImageKit.io deberías ver:
-```
-Media Library/
-├── Evidencias/
-│   └── YYYY-MM/
-│       └── nuevas_evidencias.webp
-└── Notas/
-    └── YYYY-MM/
-        └── nuevas_notas.webp
+#### ImageKit.io (Para imágenes)
+```env
+IMAGEKIT_PUBLIC_KEY=public_abc123...
+IMAGEKIT_PRIVATE_KEY=private_xyz789...
+IMAGEKIT_URL_ENDPOINT=https://ik.imagekit.io/tu-id/
 ```
 
-## 🐛 Troubleshooting
+#### Configuración Next.js
+```env
+NEXT_TELEMETRY_DISABLED=1
+NODE_VERSION=18.19.0
+```
 
-### Error: "Missing privateKey during ImageKit initialization"
-- ✅ **Solución**: Verificar que `IMAGEKIT_PRIVATE_KEY` esté configurada en Netlify
-- ✅ **Verificar**: La variable no debe tener espacios extra o caracteres especiales
+#### Google Sheets (Opcional)
+```env
+GOOGLE_SHEETS_CLIENT_EMAIL=servicio@proyecto.iam.gserviceaccount.com
+GOOGLE_SHEETS_PRIVATE_KEY=-----BEGIN PRIVATE KEY-----\nMII...
+```
 
-### Error: "Failed to upload to ImageKit"
-- ✅ **Verificar**: Todas las variables de entorno están configuradas
-- ✅ **Verificar**: Las claves de ImageKit son válidas
-- ✅ **Verificar**: El endpoint URL es correcto
+### 4. Configuración de Dominio
 
-### API Routes no funcionan
-- ✅ **Verificar**: El archivo `netlify.toml` está en la raíz del proyecto
-- ✅ **Verificar**: El plugin `@netlify/plugin-nextjs` está instalado
+#### Dominio Automático
+- Netlify asigna: `https://proyecto-hash.netlify.app`
+- Puedes cambiar el nombre en **Site settings** → **Site details**
 
-### Imágenes no se muestran
-- ✅ **Verificar**: Los dominios están configurados en `next.config.js`
-- ✅ **Verificar**: Las URLs de ImageKit.io son accesibles
+#### Dominio Personalizado (Opcional)
+1. **Site settings** → **Domain management**
+2. **Add custom domain**
+3. Configura DNS según las instrucciones
+
+### 5. Optimizaciones Configuradas
+
+#### Headers de Seguridad ✅
+- X-Frame-Options: DENY
+- X-XSS-Protection activado
+- Referrer-Policy configurado
+
+#### Cache Optimizado ✅
+- Archivos estáticos: 1 año
+- Service Worker: No cache
+- Imágenes: Cache largo
+
+#### Funciones Serverless ✅
+- API Routes funcionando
+- External modules optimizados
+- Bundler esbuild activado
+
+### 6. Verificación Post-Deploy
+
+#### Checklist de Verificación
+- [ ] **Build exitoso** (verde en dashboard)
+- [ ] **Site accesible** via URL de Netlify
+- [ ] **API funcionando** (prueba /api/setup)
+- [ ] **Imágenes cargando** correctamente
+- [ ] **Formularios funcionando**
+- [ ] **Base de datos conectada**
+
+#### URLs de Prueba
+```
+https://tu-site.netlify.app/               # Página principal
+https://tu-site.netlify.app/api/setup      # API de configuración
+https://tu-site.netlify.app/nueva-revision # Formulario
+```
+
+### 7. Comandos de Diagnóstico
+
+Si hay problemas, usa estos comandos locales:
+
+```bash
+# Verificar build local
+npm run build
+
+# Verificar ImageKit
+npm run verify-imagekit
+
+# Verificar variables
+echo $NEXT_PUBLIC_SUPABASE_URL
+```
+
+### 8. Troubleshooting Común
+
+#### Error de Build
+- Verificar todas las variables de entorno
+- Revisar Node.js version (18.19.0)
+- Comprobar dependencias en package.json
+
+#### API Routes no funcionan
+- Verificar netlify.toml redirects
+- Comprobar @netlify/plugin-nextjs
+- Revisar logs de funciones
+
+#### Imágenes no cargan
+- Verificar configuración ImageKit
+- Comprobar dominios en next.config.js
+- Revisar URLs en las variables
+
+### 9. Deploy Automático
+
+✅ **Configurado**: Cada push a `main` redeploya automáticamente
+
+Para deployes manuales:
+1. **Site overview** → **Trigger deploy**
+2. Selecciona **"Deploy site"**
+
+---
 
 ## 📞 Soporte
 
-Si encuentras problemas:
-1. Revisa los logs de build en Netlify
-2. Verifica las variables de entorno
-3. Prueba localmente con `npm run dev`
-4. Consulta la documentación de ImageKit.io
-
-## 🔗 Enlaces Útiles
-
-- [Panel de Netlify](https://app.netlify.com/)
-- [Panel de ImageKit.io](https://imagekit.io/dashboard)
-- [Documentación de Next.js en Netlify](https://docs.netlify.com/frameworks/next-js/)
-- [Documentación de ImageKit.io](https://docs.imagekit.io/) 
+- **Netlify Docs**: https://docs.netlify.com/
+- **Next.js on Netlify**: https://docs.netlify.com/frameworks/next-js/
+- **Plugin Docs**: https://github.com/netlify/netlify-plugin-nextjs 

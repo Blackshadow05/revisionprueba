@@ -7,14 +7,15 @@
 
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
+  NPM_FLAGS = "--production=false"
 
-# Configuración para las API routes
+# Configuración para las API routes de Next.js
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/___netlify-handler"
   status = 200
 
-# Headers para optimización
+# Configuración para archivos estáticos optimizada
 [[headers]]
   for = "/_next/static/*"
   [headers.values]
@@ -22,6 +23,11 @@
 
 [[headers]]
   for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+    
+[[headers]]
+  for = "/icons/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000"
 
@@ -32,10 +38,26 @@
     Cache-Control = "no-cache, no-store, must-revalidate"
     Service-Worker-Allowed = "/"
 
+# Headers de seguridad mejorados
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Configuración de funciones serverless
 [functions]
   node_bundler = "esbuild"
-  external_node_modules = ["@supabase/supabase-js", "@supabase/realtime-js"]
+  external_node_modules = [
+    "@supabase/supabase-js", 
+    "@supabase/realtime-js",
+    "imagekit",
+    "@heroicons/react"
+  ]
 
+# Optimizaciones de procesamiento
 [build.processing]
   skip_processing = false
 
@@ -51,4 +73,8 @@
   pretty_urls = true
 
 [build.processing.images]
-  compress = true 
+  compress = true
+
+# Configuración de Forms (si usas formularios)
+[build.environment]
+  NODE_VERSION = "18.19.0" 
