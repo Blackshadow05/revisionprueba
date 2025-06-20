@@ -251,10 +251,10 @@ export default function DetalleRevision({ params }: { params: { id: string } }) 
 
       if (nuevaNota.evidencia) {
         try {
-          // Usar ImageKit.io en lugar de Cloudinary
+          // Subir imagen al servidor
           evidenciaUrl = await uploadToImageKitClient(nuevaNota.evidencia, 'notas');
         } catch (uploadError) {
-          console.error('Error al subir imagen a ImageKit:', uploadError);
+                      console.error('Error al subir imagen:', uploadError);
           throw new Error('Error al subir la imagen');
         }
       }

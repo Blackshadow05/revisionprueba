@@ -60,7 +60,7 @@ export const uploadToImageKit = async (
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
     
-    console.log(`📁 Subiendo a ImageKit.io: ${folderPath}/${fileName}`);
+    console.log(`📁 Subiendo imagen: ${folderPath}/${fileName}`);
     
     // Subir archivo a ImageKit.io
     const response = await imagekit.upload({

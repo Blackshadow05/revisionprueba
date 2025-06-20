@@ -111,7 +111,7 @@ export function useOptimizedUpload() {
         [uploadId]: {
           ...prev[uploadId],
           progress: 75,
-          stage: 'Subiendo a ImageKit.io...'
+          stage: 'Subiendo imágenes...'
         }
       }));
 

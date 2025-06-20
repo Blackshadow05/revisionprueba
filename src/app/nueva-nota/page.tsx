@@ -143,10 +143,10 @@ export default function NuevaNota() {
       let evidenciaUrl = null;
 
       if (formData.evidencia) {
-        console.log('📸 Subiendo imagen a ImageKit.io...');
+        console.log('📸 Subiendo imagen...');
         const compressedImage = await compressImage(formData.evidencia);
         
-        // Subir directamente a ImageKit.io con organización automática por carpetas
+        // Subir imagen con organización automática por carpetas
         evidenciaUrl = await uploadToImageKitClient(compressedImage, 'notas');
         console.log('✅ Imagen subida exitosamente:', evidenciaUrl);
       }

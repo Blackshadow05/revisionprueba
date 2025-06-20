@@ -1826,7 +1826,7 @@ export default function NuevaRevision() {
                 <div className="bg-gradient-to-r from-blue-500/10 to-green-500/10 border border-blue-500/20 rounded-xl p-4 backdrop-blur-sm">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
-                    <span className="text-blue-400 font-medium">Subiendo imágenes a ImageKit.io</span>
+                    <span className="text-blue-400 font-medium">Subiendo imágenes</span>
                     <span className="text-gray-300 text-sm">
                       ({overallUploadProgress.completedFiles}/{overallUploadProgress.totalFiles})
                     </span>
