@@ -1,0 +1,17 @@
+{
+  "name": "Revision Casitas",
+  "short_name": "Casitas",
+  "start_url": "https://revisioncasitas.netlify.app/",
+  "display": "standalone",
+  "background_color": "#757575",
+  "theme_color": "#757575",
+  "description": "Sistema moderno para la gestión y control de revisiones",
+  "icons": [
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait"
+} 
