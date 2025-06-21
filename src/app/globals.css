@@ -1,0 +1,1295 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optimizaciones de rendimiento para dispositivos de gama baja */
+@media (max-width: 768px), (pointer: coarse) {
+  /* Modo rendimiento activado */
+  .performance-mode {
+    /* Desactivar animaciones pesadas */
+    animation-duration: 0.01ms !important;
+    animation-delay: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0.01ms !important;
+  }
+
+  .performance-mode * {
+    /* Desactivar animaciones en todos los elementos */
+    animation-duration: 0.01ms !important;
+    animation-delay: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0.01ms !important;
+    
+    /* Desactivar filtros pesados */
+    backdrop-filter: none !important;
+    filter: none !important;
+    
+    /* Simplificar sombras */
+    box-shadow: none !important;
+    text-shadow: none !important;
+    
+    /* Desactivar will-change */
+    will-change: auto !important;
+  }
+
+  /* BOTONES - Colores fijos sin animaciones */
+  .performance-mode button {
+    /* Desactivar TODAS las transiciones y animaciones */
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    
+    /* Color de fondo fijo para todos los botones */
+    background: #374151 !important; /* Gris sólido */
+    background-image: none !important;
+    background-gradient: none !important;
+    
+    /* Bordes simples */
+    border: 1px solid #4b5563 !important;
+    box-shadow: none !important;
+    
+    /* Texto legible */
+    color: #f3f4f6 !important;
+  }
+
+  /* Botones hover - SIN efectos */
+  .performance-mode button:hover {
+    background: #374151 !important; /* Mismo color, sin cambios */
+    transform: none !important;
+    box-shadow: none !important;
+    scale: 1 !important;
+  }
+
+  /* Botones active - SIN efectos */
+  .performance-mode button:active {
+    background: #374151 !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Botones focus - Solo outline básico */
+  .performance-mode button:focus {
+    outline: 2px solid #6b7280 !important;
+    outline-offset: 2px !important;
+    box-shadow: none !important;
+  }
+
+  /* Botones primarios - Color diferente pero fijo */
+  .performance-mode button.bg-blue-500,
+  .performance-mode button.bg-blue-600,
+  .performance-mode button.bg-green-500,
+  .performance-mode button.bg-green-600,
+  .performance-mode button.bg-purple-500,
+  .performance-mode button.bg-purple-600,
+  .performance-mode .bg-gradient-to-r {
+    background: #1f2937 !important; /* Azul gris oscuro fijo */
+    background-image: none !important;
+    color: #f3f4f6 !important;
+  }
+
+  /* Permitir solo animaciones básicas de transform y opacity */
+  .performance-mode .allow-animation {
+    animation-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+  }
+
+  /* Optimizar gradientes para dispositivos lentos */
+  .performance-mode .bg-gradient-to-br,
+  .performance-mode .bg-gradient-to-r,
+  .performance-mode .bg-gradient-to-l,
+  .performance-mode .bg-gradient-to-t,
+  .performance-mode .bg-gradient-to-b {
+    background: rgba(30, 37, 56, 0.8) !important;
+  }
+
+  /* Simplificar bordes y sombras */
+  .performance-mode .border-opacity-50,
+  .performance-mode .border-opacity-30 {
+    border-color: rgba(61, 70, 89, 0.3) !important;
+  }
+
+  /* Desactivar efectos de hover complejos en modo rendimiento */
+  .performance-mode .hover\:scale-110:hover,
+  .performance-mode .hover\:scale-105:hover,
+  .performance-mode .hover\:scale-\[1\.02\]:hover {
+    transform: none !important;
+  }
+
+  /* Simplificar backdrop-blur */
+  .performance-mode .backdrop-blur-md,
+  .performance-mode .backdrop-blur-sm {
+    backdrop-filter: none !important;
+    background-color: rgba(30, 37, 56, 0.9) !important;
+  }
+}
+
+/* Estilos específicos para el modo visual (por defecto) */
+.visual-mode {
+  /* Mantener todas las animaciones y efectos */
+}
+
+/* Configuración específica por modo de rendimiento usando data attributes */
+[data-performance-mode="performance"] {
+  /* Optimización global para modo rendimiento */
+}
+
+[data-performance-mode="performance"] .animate-pulse {
+  animation: none !important;
+}
+
+[data-performance-mode="performance"] .animate-bounce {
+  animation: none !important;
+}
+
+[data-performance-mode="performance"] .animate-spin {
+  animation: none !important;
+}
+
+/* BOTONES - Modo rendimiento para TODOS los dispositivos */
+[data-performance-mode="performance"] button {
+  /* Desactivar TODAS las transiciones y animaciones */
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+  
+  /* Color de fondo fijo para todos los botones */
+  background: #374151 !important; /* Gris sólido */
+  background-image: none !important;
+  background-gradient: none !important;
+  
+  /* Bordes simples */
+  border: 1px solid #4b5563 !important;
+  box-shadow: none !important;
+  
+  /* Texto legible */
+  color: #f3f4f6 !important;
+}
+
+/* Botones hover - SIN efectos en modo rendimiento */
+[data-performance-mode="performance"] button:hover {
+  background: #374151 !important; /* Mismo color, sin cambios */
+  transform: none !important;
+  box-shadow: none !important;
+  scale: 1 !important;
+  color: #f3f4f6 !important;
+}
+
+/* Botones active - SIN efectos en modo rendimiento */
+[data-performance-mode="performance"] button:active {
+  background: #374151 !important;
+  transform: none !important;
+  box-shadow: none !important;
+  color: #f3f4f6 !important;
+}
+
+/* Botones focus - Solo outline básico en modo rendimiento */
+[data-performance-mode="performance"] button:focus {
+  outline: 2px solid #6b7280 !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+  background: #374151 !important;
+  color: #f3f4f6 !important;
+}
+
+/* Botones primarios - Color diferente pero fijo en modo rendimiento */
+[data-performance-mode="performance"] button.bg-blue-500,
+[data-performance-mode="performance"] button.bg-blue-600,
+[data-performance-mode="performance"] button.bg-green-500,
+[data-performance-mode="performance"] button.bg-green-600,
+[data-performance-mode="performance"] button.bg-purple-500,
+[data-performance-mode="performance"] button.bg-purple-600,
+[data-performance-mode="performance"] .bg-gradient-to-r,
+[data-performance-mode="performance"] .bg-gradient-to-br,
+[data-performance-mode="performance"] .bg-gradient-to-l {
+  background: #1f2937 !important; /* Azul gris oscuro fijo */
+  background-image: none !important;
+  color: #f3f4f6 !important;
+  border: 1px solid #374151 !important;
+}
+
+/* Enlaces que parecen botones */
+[data-performance-mode="performance"] a {
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+[data-performance-mode="performance"] a:hover {
+  transform: none !important;
+  scale: 1 !important;
+}
+
+/* Desactivar todos los efectos de scale y transform */
+[data-performance-mode="performance"] .hover\:scale-110:hover,
+[data-performance-mode="performance"] .hover\:scale-105:hover,
+[data-performance-mode="performance"] .hover\:scale-\[1\.02\]:hover,
+[data-performance-mode="performance"] .hover\:scale-95:hover,
+[data-performance-mode="performance"] .active\:scale-95:active,
+[data-performance-mode="performance"] .transform {
+  transform: none !important;
+}
+
+/* Desactivar cambios de color en hover */
+[data-performance-mode="performance"] .hover\:bg-blue-400:hover,
+[data-performance-mode="performance"] .hover\:bg-green-400:hover,
+[data-performance-mode="performance"] .hover\:bg-purple-400:hover,
+[data-performance-mode="performance"] .hover\:bg-pink-400:hover,
+[data-performance-mode="performance"] .hover\:from-green-400:hover,
+[data-performance-mode="performance"] .hover\:via-green-500:hover,
+[data-performance-mode="performance"] .hover\:to-green-600:hover {
+  background: #374151 !important;
+  background-image: none !important;
+}
+
+/* Permitir solo animaciones críticas en modo rendimiento */
+[data-performance-mode="performance"] .critical-animation {
+  animation-duration: 0.15s !important;
+  transition-duration: 0.15s !important;
+}
+
+/* EXCEPCIÓN: Botón de toggle de rendimiento - Mantener funcionalidad */
+[data-performance-mode="performance"] [data-performance-toggle] {
+  /* Permitir transiciones básicas solo para el toggle */
+  transition: transform 0.15s ease !important;
+  background: linear-gradient(to bottom right, #22c55e, #16a34a, #15803d) !important;
+  color: white !important;
+  border: 2px solid rgba(34, 197, 94, 0.5) !important;
+}
+
+[data-performance-mode="performance"] [data-performance-toggle]:hover {
+  transform: scale(1.05) !important;
+  background: linear-gradient(to bottom right, #16a34a, #15803d, #166534) !important;
+}
+
+/* Mantener el indicador de estado del toggle */
+[data-performance-mode="performance"] [data-performance-toggle] .animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+}
+
+/* EXCEPCIÓN: Toggle inline de rendimiento - Mantener funcionalidad básica */
+[data-performance-mode="performance"] .performance-toggle-inline button {
+  transition: background-color 0.2s ease !important;
+  background: #22c55e !important;
+  color: white !important;
+  border: 1px solid #16a34a !important;
+}
+
+[data-performance-mode="performance"] .performance-toggle-inline button:hover {
+  background: #16a34a !important;
+  transform: scale(1.02) !important;
+}
+
+/* BOTONES ESPECÍFICOS - Nueva Revisión (Verde Claro) e Iniciar Sesión (Naranja) */
+/* Botón Nueva Revisión - Verde claro en modo rendimiento */
+[data-performance-mode="performance"] .nueva-revision-button {
+  background: #86efac !important; /* Verde claro */
+  background-image: none !important;
+  color: #166534 !important; /* Verde oscuro para contraste */
+  border: 2px solid #22c55e !important;
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+[data-performance-mode="performance"] .nueva-revision-button:hover {
+  background: #86efac !important; /* Mismo verde claro, sin cambios */
+  color: #166534 !important;
+  transform: none !important;
+  box-shadow: none !important;
+  scale: 1 !important;
+}
+
+[data-performance-mode="performance"] .nueva-revision-button:active {
+  background: #86efac !important;
+  color: #166534 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+[data-performance-mode="performance"] .nueva-revision-button:focus {
+  background: #86efac !important;
+  color: #166534 !important;
+  outline: 2px solid #22c55e !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}
+
+/* Botón Iniciar Sesión - Naranja bonito en modo rendimiento */
+[data-performance-mode="performance"] .metallic-button-gold {
+  background: #fb923c !important; /* Naranja bonito */
+  background-image: none !important;
+  color: #ffffff !important; /* Blanco para contraste */
+  border: 2px solid #f97316 !important;
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+[data-performance-mode="performance"] .metallic-button-gold:hover {
+  background: #fb923c !important; /* Mismo naranja, sin cambios */
+  color: #ffffff !important;
+  transform: none !important;
+  box-shadow: none !important;
+  scale: 1 !important;
+}
+
+[data-performance-mode="performance"] .metallic-button-gold:active {
+  background: #fb923c !important;
+  color: #ffffff !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+[data-performance-mode="performance"] .metallic-button-gold:focus {
+  background: #fb923c !important;
+  color: #ffffff !important;
+  outline: 2px solid #f97316 !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}
+
+/* DESACTIVAR EFECTOS DE BRILLO EN MODO RENDIMIENTO */
+/* Eliminar efectos de brillo metálico y animaciones shine */
+[data-performance-mode="performance"] .metallic-button::before,
+[data-performance-mode="performance"] .metallic-button-gold::before,
+[data-performance-mode="performance"] .metallic-button-green::before,
+[data-performance-mode="performance"] .metallic-button-red::before,
+[data-performance-mode="performance"] .nueva-revision-button::before {
+  display: none !important;
+  opacity: 0 !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Desactivar animaciones de brillo en hover */
+[data-performance-mode="performance"] .metallic-button:hover::before,
+[data-performance-mode="performance"] .metallic-button-gold:hover::before,
+[data-performance-mode="performance"] .metallic-button-green:hover::before,
+[data-performance-mode="performance"] .metallic-button-red:hover::before,
+[data-performance-mode="performance"] .nueva-revision-button:hover::before {
+  display: none !important;
+  opacity: 0 !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Desactivar todas las animaciones de brillo personalizadas */
+[data-performance-mode="performance"] .animate-shimmer,
+[data-performance-mode="performance"] .animate-shimmer-mobile {
+  animation: none !important;
+}
+
+/* Desactivar keyframes de brillo */
+[data-performance-mode="performance"] * {
+  animation-name: none !important;
+}
+
+/* Eliminar efectos shine específicos */
+[data-performance-mode="performance"] [class*="shine"],
+[data-performance-mode="performance"] [class*="metallic"],
+[data-performance-mode="performance"] [class*="shimmer"] {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-performance-mode="performance"] [class*="shine"]::before,
+[data-performance-mode="performance"] [class*="metallic"]::before,
+[data-performance-mode="performance"] [class*="shimmer"]::before {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+/* BOTONES ADICIONALES - Cerrar Sesión (Rojo Claro) y Menú (Amarillo) */
+/* Botón Cerrar Sesión - Rojo claro en modo rendimiento */
+[data-performance-mode="performance"] .metallic-button-red {
+  background: #fca5a5 !important; /* Rojo claro */
+  background-image: none !important;
+  color: #7f1d1d !important; /* Rojo oscuro para contraste */
+  border: 2px solid #ef4444 !important;
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+[data-performance-mode="performance"] .metallic-button-red:hover {
+  background: #fca5a5 !important; /* Mismo rojo claro, sin cambios */
+  color: #7f1d1d !important;
+  transform: none !important;
+  box-shadow: none !important;
+  scale: 1 !important;
+}
+
+[data-performance-mode="performance"] .metallic-button-red:active {
+  background: #fca5a5 !important;
+  color: #7f1d1d !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+[data-performance-mode="performance"] .metallic-button-red:focus {
+  background: #fca5a5 !important;
+  color: #7f1d1d !important;
+  outline: 2px solid #ef4444 !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}
+
+/* Botón de Menú - Amarillo en modo rendimiento */
+[data-performance-mode="performance"] .menu-dropdown-container button {
+  background: #fbbf24 !important; /* Amarillo bonito */
+  background-image: none !important;
+  color: #1f2937 !important; /* Gris oscuro para contraste */
+  border: 2px solid #f59e0b !important;
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+[data-performance-mode="performance"] .menu-dropdown-container button:hover {
+  background: #fbbf24 !important; /* Mismo amarillo, sin cambios */
+  color: #1f2937 !important;
+  transform: none !important;
+  box-shadow: none !important;
+  scale: 1 !important;
+}
+
+[data-performance-mode="performance"] .menu-dropdown-container button:active {
+  background: #fbbf24 !important;
+  color: #1f2937 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+[data-performance-mode="performance"] .menu-dropdown-container button:focus {
+  background: #fbbf24 !important;
+  color: #1f2937 !important;
+  outline: 2px solid #f59e0b !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}
+
+/* También cambiar el color de las líneas del menú hamburguesa */
+[data-performance-mode="performance"] .menu-dropdown-container button div div {
+  background: #1f2937 !important; /* Líneas oscuras para contraste con fondo amarillo */
+}
+
+/* PÁGINA NUEVA REVISIÓN - Estilos específicos para modo rendimiento */
+/* El título "Nueva Revisión" mantiene su estilo original en ambos modos */
+
+/* Botón "Volver" - Amarillo claro con texto negro en modo rendimiento */
+/* Selector más específico que incluye el tipo de botón y múltiples clases */
+[data-performance-mode="performance"] button[type="button"].bg-gradient-to-br.from-gray-600.via-gray-700.to-gray-800.rounded-xl.hover\:from-gray-700.hover\:via-gray-800.hover\:to-gray-900,
+[data-performance-mode="performance"] button[type="button"].bg-gradient-to-br.from-gray-600.via-gray-700.to-gray-800,
+[data-performance-mode="performance"] button.bg-gradient-to-br.from-gray-600.via-gray-700.to-gray-800.text-sm.text-white,
+[data-performance-mode="performance"] button.text-sm.text-white.bg-gradient-to-br.from-gray-600.via-gray-700.to-gray-800 {
+  background: #fef3c7 !important; /* Amarillo claro */
+  background-image: none !important;
+  color: #000000 !important; /* Negro para máximo contraste */
+  border: 2px solid #fbbf24 !important;
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+[data-performance-mode="performance"] button[type="button"].bg-gradient-to-br.from-gray-600.via-gray-700.to-gray-800.rounded-xl.hover\:from-gray-700.hover\:via-gray-800.hover\:to-gray-900:hover,
+[data-performance-mode="performance"] button[type="button"].bg-gradient-to-br.from-gray-600.via-gray-700.to-gray-800:hover,
+[data-performance-mode="performance"] button.bg-gradient-to-br.from-gray-600.via-gray-700.to-gray-800.text-sm.text-white:hover,
+[data-performance-mode="performance"] button.text-sm.text-white.bg-gradient-to-br.from-gray-600.via-gray-700.to-gray-800:hover {
+  background: #fef3c7 !important; /* Mismo amarillo claro, sin cambios */
+  color: #000000 !important; /* Negro */
+  transform: none !important;
+  box-shadow: none !important;
+  scale: 1 !important;
+}
+
+/* Selector ultra específico usando atributos y posición */
+[data-performance-mode="performance"] .flex.justify-between.items-center button[type="button"] {
+  background: #fef3c7 !important; /* Amarillo claro */
+  background-image: none !important;
+  color: #000000 !important; /* Negro */
+  border: 2px solid #fbbf24 !important;
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+[data-performance-mode="performance"] .flex.justify-between.items-center button[type="button"]:hover {
+  background: #fef3c7 !important;
+  color: #000000 !important;
+  transform: none !important;
+  box-shadow: none !important;
+  scale: 1 !important;
+}
+
+/* Desactivar efectos de brillo en el botón volver */
+[data-performance-mode="performance"] .flex.justify-between.items-center button[type="button"]::before,
+[data-performance-mode="performance"] .flex.justify-between.items-center button[type="button"]::after,
+[data-performance-mode="performance"] button[type="button"].bg-gradient-to-br::before,
+[data-performance-mode="performance"] button[type="button"].bg-gradient-to-br::after {
+  display: none !important;
+  opacity: 0 !important;
+  animation: none !important;
+}
+
+/* Botón "Guardar Revisión" - Verde en modo rendimiento */
+[data-performance-mode="performance"] button[type="submit"] {
+  background: #86efac !important; /* Verde claro */
+  background-image: none !important;
+  color: #166534 !important; /* Verde oscuro para contraste */
+  border: 2px solid #22c55e !important;
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+[data-performance-mode="performance"] button[type="submit"]:hover {
+  background: #86efac !important; /* Mismo verde claro, sin cambios */
+  color: #166534 !important;
+  transform: none !important;
+  box-shadow: none !important;
+  scale: 1 !important;
+}
+
+[data-performance-mode="performance"] button[type="submit"]:disabled {
+  background: #86efac !important; /* Mantener verde claro incluso cuando está deshabilitado */
+  color: #166534 !important;
+  opacity: 0.7 !important;
+  cursor: not-allowed !important;
+}
+
+/* Desactivar efectos de brillo en el botón guardar */
+[data-performance-mode="performance"] button[type="submit"]::before,
+[data-performance-mode="performance"] button[type="submit"]::after {
+  display: none !important;
+  opacity: 0 !important;
+  animation: none !important;
+}
+
+/* Optimizaciones específicas para la tabla */
+[data-performance-mode="performance"] .table-container {
+  /* Desactivar smooth scrolling en modo rendimiento */
+  scroll-behavior: auto !important;
+}
+
+[data-performance-mode="performance"] .table-container * {
+  /* Optimizar rendimiento de la tabla */
+  will-change: auto !important;
+}
+
+/* Optimizaciones para formularios y inputs */
+[data-performance-mode="performance"] input,
+[data-performance-mode="performance"] select,
+[data-performance-mode="performance"] textarea {
+  transition: none !important;
+}
+
+[data-performance-mode="performance"] input:focus,
+[data-performance-mode="performance"] select:focus,
+[data-performance-mode="performance"] textarea:focus {
+  box-shadow: 0 0 0 2px rgba(201, 164, 92, 0.5) !important;
+}
+
+/* Media queries para dispositivos específicos */
+@media (max-width: 480px) and (max-height: 800px) {
+  /* Optimizaciones adicionales para móviles pequeños */
+  [data-performance-mode="performance"] .text-shadow {
+    text-shadow: none !important;
+  }
+  
+  [data-performance-mode="performance"] .shadow-2xl,
+  [data-performance-mode="performance"] .shadow-xl,
+  [data-performance-mode="performance"] .shadow-lg {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+/* Indicadores visuales para el modo activo */
+[data-performance-mode="performance"]::before {
+  content: "🚀 Modo Rendimiento Activo";
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: rgba(34, 197, 94, 0.9);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: bold;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  animation: showPerformanceIndicator 3s ease-in-out;
+}
+
+@keyframes showPerformanceIndicator {
+  0%, 90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Animaciones personalizadas */
+@keyframes shimmer {
+  0% { transform: translateX(-200%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulse-green {
+  0%, 100% {
+    background-color: rgb(34, 197, 94);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+  }
+  50% {
+    background-color: rgb(22, 163, 74);
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.8);
+  }
+}
+
+/* Animación de brillo metálico deslizante */
+@keyframes metallic-shine {
+  0% { 
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% { 
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.animate-pulse-green {
+  animation: pulse-green 1.5s ease-in-out infinite;
+}
+
+/* Botones con efecto metálico */
+.metallic-button {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 50%, #374151 100%);
+  border: 1px solid #6b7280;
+}
+
+.metallic-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: metallic-shine 2.5s ease-in-out infinite;
+  z-index: 1;
+}
+
+.metallic-button-gold::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 164, 92, 0.6),
+    rgba(240, 201, 135, 0.8),
+    rgba(201, 164, 92, 0.6),
+    transparent
+  );
+}
+
+.metallic-button-green::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34, 197, 94, 0.6),
+    rgba(74, 222, 128, 0.8),
+    rgba(34, 197, 94, 0.6),
+    transparent
+  );
+}
+
+.metallic-button-red::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(239, 68, 68, 0.6),
+    rgba(248, 113, 113, 0.8),
+    rgba(239, 68, 68, 0.6),
+    transparent
+  );
+}
+
+.metallic-button > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Botón personalizado Nueva Revisión con fondo negro metálico */
+.nueva-revision-button {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 30%, #2d2d2d 50%, #1a1a1a 70%, #000000 100%);
+  border: 1px solid #333;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.nueva-revision-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(9, 128, 66, 0.4),
+    rgba(9, 128, 66, 0.8),
+    rgba(9, 128, 66, 1),
+    rgba(9, 128, 66, 0.8),
+    rgba(9, 128, 66, 0.4),
+    transparent
+  );
+  animation: shine-green 2.5s linear infinite;
+  z-index: 1;
+}
+
+.nueva-revision-button:hover::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(9, 128, 66, 0.6),
+    rgba(9, 128, 66, 0.9),
+    rgba(9, 128, 66, 1),
+    rgba(9, 128, 66, 0.9),
+    rgba(9, 128, 66, 0.6),
+    transparent
+  );
+}
+
+.nueva-revision-button > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Animación de brillo que pasa de izquierda a derecha */
+@keyframes shine-green {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 26, 31, 53;
+  --background-end-rgb: 45, 54, 76;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom right,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+  min-height: 100vh;
+  font-size: 16px;
+}
+
+/* Estilos base para mejor legibilidad en móvil */
+@layer base {
+  html {
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    html {
+      font-size: 18px;
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+
+  p, li, button, input, select, textarea {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
+
+    p, li, button, input, select, textarea {
+      font-size: 1.125rem;
+    }
+  }
+}
+
+/* Estilos personalizados para scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e2538;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3d4659;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a5573;
+}
+
+/* Mejoras para interacción táctil */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Estilos específicos para botones táctiles */
+button, [role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mejora la respuesta táctil en dispositivos móviles */
+@media (hover: none) and (pointer: coarse) {
+  button:active, [role="button"]:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+  
+  .cursor-pointer:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+  
+  /* Estilos específicos para el botón del menú en móvil */
+  .menu-dropdown-container [role="button"]:active {
+    background-color: #f0c987 !important;
+    transform: scale(0.95);
+    transition: all 0.1s ease;
+  }
+}
+
+/* Asegurar que los elementos táctiles tengan el tamaño mínimo recomendado */
+[role="button"], button {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Animaciones suaves */
+.transition-all {
+  transition-duration: 300ms;
+}
+
+/* Efectos de hover elegantes */
+.hover\:shadow-gold:hover {
+  box-shadow: 0 0 20px rgba(201, 164, 92, 0.2);
+}
+
+/* Tipografía mejorada */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Efectos de glassmorphism */
+.glass-effect {
+  background: rgba(42, 51, 71, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(61, 70, 89, 0.3);
+}
+
+/* Estilos para tablas en móvil */
+@media (max-width: 768px) {
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: 85vh;
+    margin: 0 -1rem;
+    width: calc(100% + 2rem);
+  }
+
+  table {
+    font-size: 0.8rem;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  th, td {
+    padding: 0.25rem;
+    white-space: nowrap;
+    min-width: 80px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* Estilos para el encabezado */
+  thead {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+  }
+
+  thead th {
+    background: #1e2538;
+    border-bottom: 1px solid rgba(61, 70, 89, 0.5);
+    padding: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  /* Columnas fijas */
+  .fixed-column-1 {
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 20 !important;
+    background: #1e2538 !important;
+    min-width: 110px !important;
+    max-width: 110px !important;
+    border-right: 1px solid rgba(61, 70, 89, 0.5) !important;
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.375rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .fixed-column-1 .flex-col {
+    gap: 0.125rem;
+  }
+
+  .fixed-column-1 .text-xs {
+    font-size: 0.75rem;
+    line-height: 1.1;
+    color: #c9a45c;
+  }
+
+  .fixed-column-2 {
+    position: sticky !important;
+    left: 110px !important;
+    z-index: 20 !important;
+    background: #1e2538 !important;
+    min-width: 60px !important;
+    border-right: 1px solid rgba(61, 70, 89, 0.5) !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Esquinas superiores */
+  thead .fixed-column-1,
+  thead .fixed-column-2 {
+    z-index: 40 !important;
+    background: #1e2538 !important;
+  }
+
+  /* Ajustes para columnas específicas */
+  td:nth-child(3), /* Quien revisa */
+  td:nth-child(4), /* Caja fuerte */
+  td:nth-child(5), /* Puertas/Ventanas */
+  th:nth-child(3),
+  th:nth-child(4),
+  th:nth-child(5) {
+    min-width: 70px !important;
+  }
+
+  /* Ajustes para columnas con contenido corto */
+  td:nth-child(6), /* Chromecast */
+  td:nth-child(7), /* Binoculares */
+  td:nth-child(8), /* Trapo binoculares */
+  td:nth-child(9), /* Speaker */
+  td:nth-child(10), /* USB Speaker */
+  td:nth-child(11), /* Controles TV */
+  th:nth-child(6),
+  th:nth-child(7),
+  th:nth-child(8),
+  th:nth-child(9),
+  th:nth-child(10),
+  th:nth-child(11) {
+    min-width: 55px !important;
+  }
+
+  /* Ajustes para columnas con contenido muy corto */
+  td:nth-child(12), /* Secadora */
+  td:nth-child(13), /* Accesorios secadora */
+  td:nth-child(14), /* Steamer */
+  td:nth-child(15), /* Bolsa vapor */
+  td:nth-child(16), /* Plancha cabello */
+  td:nth-child(17), /* Bulto */
+  td:nth-child(18), /* Sombrero */
+  td:nth-child(19), /* Bolso yute */
+  td:nth-child(20), /* Camas ordenadas */
+  td:nth-child(21), /* Cola caballo */
+  th:nth-child(12),
+  th:nth-child(13),
+  th:nth-child(14),
+  th:nth-child(15),
+  th:nth-child(16),
+  th:nth-child(17),
+  th:nth-child(18),
+  th:nth-child(19),
+  th:nth-child(20),
+  th:nth-child(21) {
+    min-width: 50px !important;
+  }
+
+  /* Ajustes para columnas especiales */
+  td:nth-child(22), /* Notas */
+  th:nth-child(22) {
+    min-width: 65px !important;
+  }
+
+  td:nth-child(23), /* Evidencias */
+  th:nth-child(23) {
+    min-width: 60px !important;
+  }
+}
+
+/* Estilos para desktop */
+@media (min-width: 769px) {
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: 90vh;
+    margin-bottom: 1rem;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  /* Estilos para el encabezado */
+  thead {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+  }
+
+  thead th {
+    background: #1e2538;
+    border-bottom: 1px solid rgba(61, 70, 89, 0.5);
+    padding: 0.375rem;
+  }
+
+  /* Columnas fijas */
+  .fixed-column-1 {
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 20 !important;
+    background: #1e2538 !important;
+    min-width: 140px !important;
+    max-width: 140px !important;
+    border-right: 1px solid rgba(61, 70, 89, 0.5) !important;
+    color: #c9a45c !important;
+    font-size: 1.1rem !important;
+  }
+
+  .fixed-column-2 {
+    position: sticky !important;
+    left: 140px !important;
+    z-index: 20 !important;
+    background: #1e2538 !important;
+    min-width: 70px !important;
+    border-right: 1px solid rgba(61, 70, 89, 0.5) !important;
+  }
+
+  /* Esquinas superiores */
+  thead .fixed-column-1,
+  thead .fixed-column-2 {
+    z-index: 40 !important;
+    background: #1e2538 !important;
+  }
+
+  td {
+    padding: 0.375rem;
+  }
+
+  /* Ajustes para columnas específicas */
+  td:nth-child(3), /* Quien revisa */
+  td:nth-child(4), /* Caja fuerte */
+  td:nth-child(5), /* Puertas/Ventanas */
+  th:nth-child(3),
+  th:nth-child(4),
+  th:nth-child(5) {
+    min-width: 85px !important;
+  }
+
+  /* Ajustes para columnas con contenido corto */
+  td:nth-child(6), /* Chromecast */
+  td:nth-child(7), /* Binoculares */
+  td:nth-child(8), /* Trapo binoculares */
+  td:nth-child(9), /* Speaker */
+  td:nth-child(10), /* USB Speaker */
+  td:nth-child(11), /* Controles TV */
+  th:nth-child(6),
+  th:nth-child(7),
+  th:nth-child(8),
+  th:nth-child(9),
+  th:nth-child(10),
+  th:nth-child(11) {
+    min-width: 65px !important;
+  }
+
+  /* Ajustes para columnas con contenido muy corto */
+  td:nth-child(12), /* Secadora */
+  td:nth-child(13), /* Accesorios secadora */
+  td:nth-child(14), /* Steamer */
+  td:nth-child(15), /* Bolsa vapor */
+  td:nth-child(16), /* Plancha cabello */
+  td:nth-child(17), /* Bulto */
+  td:nth-child(18), /* Sombrero */
+  td:nth-child(19), /* Bolso yute */
+  td:nth-child(20), /* Camas ordenadas */
+  td:nth-child(21), /* Cola caballo */
+  th:nth-child(12),
+  th:nth-child(13),
+  th:nth-child(14),
+  th:nth-child(15),
+  th:nth-child(16),
+  th:nth-child(17),
+  th:nth-child(18),
+  th:nth-child(19),
+  th:nth-child(20),
+  th:nth-child(21) {
+    min-width: 60px !important;
+  }
+
+  /* Ajustes para columnas especiales */
+  td:nth-child(22), /* Notas */
+  th:nth-child(22) {
+    min-width: 75px !important;
+  }
+
+  td:nth-child(23), /* Evidencias */
+  th:nth-child(23) {
+    min-width: 120px !important;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes shimmer-mobile {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s infinite;
+  -webkit-animation: shimmer 1.5s infinite;
+}
+
+.animate-shimmer-mobile {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-mobile 1.5s infinite;
+  -webkit-animation: shimmer-mobile 1.5s infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+  -webkit-animation: spin 1s linear infinite;
+}
+
+/* Estilos específicos para móvil */
+@media (max-width: 768px) {
+  .animate-shimmer {
+    animation: shimmer 1.5s infinite;
+    -webkit-animation: shimmer 1.5s infinite;
+    will-change: transform;
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+    -webkit-animation: spin 1s linear infinite;
+    will-change: transform;
+  }
+} 
